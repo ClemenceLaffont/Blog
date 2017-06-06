@@ -1,3 +1,4 @@
+
 <?php 
 $page = "blog";
 include("header.php"); 

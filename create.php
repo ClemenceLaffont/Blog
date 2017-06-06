@@ -9,11 +9,11 @@ if (isset($_POST['modifier'])) {
 }
 ?>
 <main>
-    <form method="post" action="blog.php">
+    <form method="post" action="controle.php">
         <input type="text" name="titre" required 
         <?php
             if (isset($file)) {
-                    echo "value='".pathinfo($_POST['truc'], PATHINFO_FILENAME)."'";
+                    echo 'value="'.pathinfo($_POST['truc'], PATHINFO_FILENAME).'"';
             }
         ?>
         />
