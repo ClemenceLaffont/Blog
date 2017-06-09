@@ -15,6 +15,9 @@ include("header.php");
                 <article>
                     <h1><?php echo pathinfo($titre, PATHINFO_FILENAME); ?></h1>
                     <p><?php echo $contenu; ?></p>
+                    <?php
+                    if(isset($_SESSION["connect"]) && $_SESSION["connect"] == true) {
+                    ?>
                     <form action="controle.php" method="POST">
                         <input type="hidden" value="<?php echo $titre; ?>" name="truc"/>
                         <input type="submit" name="supprimer" value="supprimer"/>
@@ -23,6 +26,7 @@ include("header.php");
                         <input type="hidden" value="<?php echo $titre; ?>" name="truc"/>
                         <input type="submit" name="modifier" value="modifier"/>
                     </form>
+                    <?php } ?>
                 </article>
     <?php
             }

@@ -65,6 +65,9 @@
             echo $_POST["register_pseudo"];
             echo $_POST["register_crypt"];
             echo '<h6>Vous avez été enregistré avec succès, vous allez etre redirigé vers votre profil dans 3 secondes.<h6>';
+            session_start();
+            $_SESSION["connect"] = true;
+            $_SESSION["user"] = $_POST["register_pseudo"];
             ?>
                 <script LANGUAGE="JavaScript">
                     setTimeout(function() {
@@ -95,6 +98,9 @@
                     $mdp = fgets ($file, 25500);
                     fclose ($file);
                     if($mdp == $_POST["crypt"]) {
+                        session_start();
+                        $_SESSION["connect"] = true;
+                        $_SESSION["user"] = $_POST["pseudo"];
                         header('Location: profil.php');
                         exit();
                     } else {
@@ -107,6 +113,11 @@
         }
     }
 
+    if (isset($_POST['deconnexion'])) {
+        $_SESSION["connect"] = false;
+        $_SESSION["user"] = "";
+        header('Location: blog.php');
+    }
     ?>
     
 </main>

@@ -11,7 +11,7 @@
     
     <title>Document</title>
 </head>
-
+<?php session_start(); ?>
 <body>
     <header>
         <div>
@@ -19,6 +19,9 @@
             <h1>Un blog de fou !</h1>
         </div>
         <nav>
+            <?php
+            if(isset($_SESSION["connect"]) && $_SESSION["connect"] == true) {
+            ?>
             <a href="create.php"
             <?php 
                 if (isset($page) && $page == "create") {
@@ -26,6 +29,7 @@
                 }
             ?>
             >Créer un article</a>
+            <?php } ?>
             <a href="blog.php"
             <?php 
                 if (isset($page) && $page == "blog") {
@@ -33,6 +37,20 @@
                 }
             ?>
             >Le blog</a>
+            <?php
+            if(isset($_SESSION["connect"]) && $_SESSION["connect"] == true) {
+            ?>
+            <a href="profil.php"
+            <?php 
+                if (isset($page) && $page == "profil") {
+                    echo ' class="underline" ';
+                }
+                echo '>'.$_SESSION["user"];
+            ?></a>
+            <form method="post" action="controle.php">
+                <input type="submit" name="deconnexion" value="deconnexion" />
+            </form>
+            <?php } else { ?>
             <a href="register.php"
             <?php 
                 if (isset($page) && $page == "enregistrer") {
@@ -52,5 +70,6 @@
                 </section>
                 <input type="submit" name="connexion" value="connexion" />
             </form>
+            <?php } ?>
         </nav>
     </header>
