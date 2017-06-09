@@ -8,22 +8,22 @@ include("header.php");
         $articles = opendir('articles/'); 
         while($titre = readdir($articles)) {
 	        if($titre[0] != '.' && !is_dir("articles/".$titre)) {
-		        $file = fopen ("articles/".$titre, "r");
-                $contenu = fgets ($file, 25500);
-                fclose ($file);
+		        $json = file_get_contents("articles/".$titre);
+                $article = json_decode($json);
 	?>
                 <article>
-                    <h1><?php echo pathinfo($titre, PATHINFO_FILENAME); ?></h1>
-                    <p><?php echo $contenu; ?></p>
+                    <h1><?php echo $article->titre; ?></h1>
+                    <p><?php echo $article->article; ?></p>
+                    <p>Ecris par <?php echo $article->pseudo." le ".$article->date.", à ".$article->heure."."; ?></p>
                     <?php
-                    if(isset($_SESSION["connect"]) && $_SESSION["connect"] == true) {
+                    if(isset($_SESSION["connect"]) && $_SESSION["connect"] == true && $article->pseudo == $_SESSION["user"]) {
                     ?>
                     <form action="controle.php" method="POST">
-                        <input type="hidden" value="<?php echo $titre; ?>" name="truc"/>
+                        <input type="hidden" value="<?php echo $titre; ?>" name="titre"/>
                         <input type="submit" name="supprimer" value="supprimer"/>
                     </form>
                     <form action="create.php" method="POST">
-                        <input type="hidden" value="<?php echo $titre; ?>" name="truc"/>
+                        <input type="hidden" value="<?php echo $titre; ?>" name="titre"/>
                         <input type="submit" name="modifier" value="modifier"/>
                     </form>
                     <?php } ?>

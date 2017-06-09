@@ -75,3 +75,10 @@ h5 {
 .invalid {
     border: 1px solid red;
 }
+
+#article {
+    width: 500px;
+    height: 200px;
+    border: 1px solid grey;
+    overflow: auto;
+}

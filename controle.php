@@ -2,13 +2,22 @@
 <main>
 <form></form>
     <?php
-    if (isset($_POST['creer']) && !isset($_POST['truc'])) {
+    if (isset($_POST['creer']) && !isset($_POST['oldtitre'])) {
         if (isset($_POST["titre"]) && isset($_POST["article"])) {
             if (!is_dir("articles")) {
                 mkdir("articles");
             }
-            $newFile = fopen("articles/".$_POST["titre"].".txt", "w") or die ("Unable to open file!");
-            fwrite($newFile, $_POST["article"]);
+            $newFile = fopen("articles/".$_POST["titre"].".json", "w") or die ("Unable to open file!");
+            session_start();
+            $obj = array(
+                "titre" => $_POST["titre"],
+                "article" => $_POST["article"],
+                "pseudo" => $_SESSION["user"],
+                "date" => date("d-m-Y"),
+                "heure" => date("H:i")
+            );
+            $json = json_encode($obj);
+            fwrite($newFile, $json);
             fclose($newFile);
             echo '<h6>Votre article a été enregistré avec succès, vous allez etre redirigé vers le blog dans 3 secondes.<h6>';
         } else {
@@ -23,11 +32,19 @@
     <?php
     }
 
-    if (isset($_POST['creer']) && isset($_POST['truc'])) {
+    if (isset($_POST['creer']) && isset($_POST['oldtitre'])) {
         if (isset($_POST["titre"]) && isset($_POST["article"])) {
-            unlink("articles/".$_POST["truc"]);
-            $newFile = fopen("articles/".$_POST["titre"].".txt", "w") or die ("Unable to open file!");
-            fwrite($newFile, $_POST["article"]);
+            unlink("articles/".$_POST["oldtitre"]);
+            $newFile = fopen("articles/".$_POST["titre"].".json", "w") or die ("Unable to open file!");
+            $obj = array(
+                "titre" => $_POST["titre"],
+                "article" => $_POST["article"],
+                "pseudo" => $_SESSION["user"],
+                "date" => date("d-m-Y"),
+                "heure" => date("H:i")
+            );
+            $json = json_encode($obj);
+            fwrite($newFile, $json);
             fclose($newFile);
             echo '<h6>Votre article a été enregistré avec succès, vous allez etre redirigé vers le blog dans 3 secondes.<h6>';
         } else {
