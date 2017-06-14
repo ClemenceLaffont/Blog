@@ -23,7 +23,7 @@ if (isset($_POST['modifier'])) {
             } else {
         ?>
         <input type="button" id="bold" value="G" style="font-weight: bold;" onclick="commande('bold');" />
-        <div name="article" id="article" contentEditable></div>
+        <textarea name="article" id="article" contentEditable></textarea>
         <?php } ?>
         <input type="submit" name="creer" value="Poster"/>
     </form>

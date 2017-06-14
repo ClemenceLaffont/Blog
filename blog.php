@@ -14,9 +14,9 @@ include("header.php");
                 <article>
                     <h1><?php echo $article->titre; ?></h1>
                     <p><?php echo $article->article; ?></p>
-                    <p>Ecris par <?php echo $article->pseudo." le ".$article->date.", à ".$article->heure."."; ?></p>
+                    <p>Ecris par <?php echo $article->utilisateur." le ".$article->date.", à ".$article->heure."."; ?></p>
                     <?php
-                    if(isset($_SESSION["connect"]) && $_SESSION["connect"] == true && $article->pseudo == $_SESSION["user"]) {
+                    if(isset($_SESSION["connect"]) && $_SESSION["connect"] == true && $article->utilisateur == $_SESSION["user"]) {
                     ?>
                     <form action="controle.php" method="POST">
                         <input type="hidden" value="<?php echo $titre; ?>" name="titre"/>
