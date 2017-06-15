@@ -48,7 +48,7 @@
                 echo '>'.$_SESSION["user"];
             ?></a>
             <form method="post" action="controle.php">
-                <input type="submit" name="deconnexion" value="deconnexion" />
+                <input type="submit" name="deconnexion" value="deconnexion" class="myButton" />
             </form>
             <?php } else { ?>
             <a href="register.php"
@@ -62,13 +62,11 @@
                 <section>
                     <label for="pseudo">Pseudo</label>
                     <input type="text" name="pseudo" id="pseudo" require/>
-                </section>
-                <section>
                     <label for="mdp">Mot de passe</label>
                     <input type="password" name="mdp" id="mdp" require/>
                     <input type="hidden" name="crypt" id="crypt" />
                 </section>
-                <input type="submit" name="connexion" value="connexion" />
+                <input type="submit" name="connexion" value="connexion" class="myButton" />
             </form>
             <?php } ?>
         </nav>

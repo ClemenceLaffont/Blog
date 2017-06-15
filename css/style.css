@@ -12,6 +12,7 @@ body {
 
 header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     background: lightslategray;
     box-shadow: 0px 1px 5px grey;
@@ -50,8 +51,17 @@ header a:hover {
     text-decoration: underline;
 }
 
-main {
-    flex-grow: 1;
+header form {
+    margin: 0px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+header form section {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.7em;
 }
 
 footer {
@@ -65,6 +75,14 @@ h5 {
     text-align: center;
 }
 
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
 #register {
     max-width: 750px;
     display: flex;
@@ -72,13 +90,138 @@ h5 {
     align-items: stretch;
 }
 
+#register input {
+    margin-bottom: 15px;
+}
+
+#register input[type="submit"] {
+    width: 100px;
+    align-self: center;
+    margin: 5px;
+}
+
+#register section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+input[type="radio"] {
+    display: block;
+}
+
 .invalid {
     border: 1px solid red;
 }
 
-#article {
-    width: 500px;
-    height: 200px;
-    border: 1px solid grey;
-    overflow: auto;
+article {
+    width: 70%;
+    max-width: 1000px;
+    min-width: 400px;
+    box-shadow: 0px 1px 5px grey;
+    border-radius: 5px;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.hautArticle {
+    background: #aaaaaa;
+    border-bottom: #888888;
+    display: flex;
+    align-items: center;
+}
+
+.hautArticle section {
+    margin-left: auto;
+    display: flex;
+}
+
+.basArticle {
+    background: #aaaaaa;
+    border-top: #cccccc;
+}
+
+.avatar {
+    background-image: url(../img/avatar.jpg);
+    background-size: 450px;
+    width: 50px;
+    height: 50px;
+    margin: 5px 5px;
+    border-radius: 3px;
+    display: block;
+}
+
+article h2 {
+    margin: 5px 10px;
+}
+
+article h4 {
+    margin: 5px;
+    text-align: center;
+    font-size: 0.7em;
+}
+
+#create {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    max-width: 1000px;
+    min-width: 400px;
+}
+
+#create input[type="text"],
+textarea {
+    width: 100%;
+}
+
+.milieuArticle {
+    padding: 10px;
+}
+
+.myButton {
+    -moz-box-shadow: inset 0px 1px 3px 0px #91b8b3;
+    -webkit-box-shadow: inset 0px 1px 3px 0px #91b8b3;
+    box-shadow: inset 0px 1px 3px 0px #91b8b3;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #768d87), color-stop(1, #6c7c7c));
+    background: -moz-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+    background: -webkit-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+    background: -o-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+    background: -ms-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+    background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#768d87', endColorstr='#6c7c7c', GradientType=0);
+    background-color: #768d87;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #566963;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 0.9em;
+    padding: 5px;
+    text-decoration: none;
+    text-shadow: 0px -1px 0px #2b665e;
+    margin: 5px;
+}
+
+.myButton:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6c7c7c), color-stop(1, #768d87));
+    background: -moz-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+    background: -webkit-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+    background: -o-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+    background: -ms-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+    background: linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#6c7c7c', endColorstr='#768d87', GradientType=0);
+    background-color: #6c7c7c;
+}
+
+.myButton:active {
+    position: relative;
+    top: 1px;
 }

@@ -8,8 +8,9 @@ if (isset($_POST['modifier'])) {
 }
 ?>
 <main>
-    <form method="post" action="controle.php">
-        <input type="text" name="titre" required 
+    <form method="post" action="controle.php" id="create">
+        <label for="titre">Titre</label>
+        <input type="text" name="titre" id="titre" required 
         <?php
             if (isset($article)) {
                     echo 'value="'.$article->titre.'"';
@@ -22,10 +23,10 @@ if (isset($_POST['modifier'])) {
                 echo '<input type="hidden" value="'.$_POST['titre'].'" name="oldtitre"/>';
             } else {
         ?>
-        <input type="button" id="bold" value="G" style="font-weight: bold;" onclick="commande('bold');" />
-        <textarea name="article" id="article" contentEditable></textarea>
+        <label for="article">Article</label>
+        <textarea name="article" id="article"></textarea>
         <?php } ?>
-        <input type="submit" name="creer" value="Poster"/>
+        <input type="submit" name="creer" value="Poster" class="myButton" />
     </form>
 </main>
 <?php include("footer.html"); ?>

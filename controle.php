@@ -8,9 +8,9 @@
                 $json = file_get_contents("articles/".$post['oldtitre']);
                 $article = json_decode($json);
                 include_once 'class/articles.php';
-                $obj = new Articles($article->utilisateur, $post['titre'], $post['article'], $article->date, $article->heure);
+                $obj = new Articles($article->utilisateur, $_SESSION['avatar'], $post['titre'], $post['article'], $article->date, $article->heure);
                 $newjson = json_encode($obj);
-                $newFile = fopen("articles/".$post['oldtitre'].".json", "w");
+                $newFile = fopen("articles/".$post['oldtitre'], "w");
                 fwrite($newFile, $newjson);
                 fclose($newFile);
                 echo '<h6>Votre article a été enregistré avec succès, vous allez etre redirigé vers le blog dans 3 secondes.<h6>';
@@ -21,7 +21,7 @@
                     mkdir("articles");
                 }
                 include_once 'class/articles.php';
-                $obj = new Articles($_SESSION['user'], $post['titre'], $post['article'], date("d-m-Y"), date("H:i:s"));
+                $obj = new Articles($_SESSION['user'], $_SESSION['avatar'], $post['titre'], $post['article'], date("d-m-Y"), date("H:i:s"));
                 $newjson = json_encode($obj);
                 $newFile = fopen("articles/".date("d-m-Y").date("H:i:s").".json", "w");
                 fwrite($newFile, $newjson);
@@ -61,7 +61,7 @@
                 mkdir("utilisateurs");
             }
             include_once 'class/utilisateurs.php';
-            $obj = new Utilisateurs($post["register_pseudo"], $post["register_crypt"], $post['mail'], "avatar1");
+            $obj = new Utilisateurs($post["register_pseudo"], $post["register_crypt"], $post['mail'], $post['avatar']);
             $json = json_encode($obj);
             $newFile = fopen("utilisateurs/".$post["register_pseudo"].".json", "w") or die ("Unable to open file!");
             fwrite($newFile, $json);
@@ -69,6 +69,7 @@
             echo '<h6>Vous avez été enregistré avec succès, vous allez etre redirigé vers votre profil dans 3 secondes.<h6>';
             $_SESSION["connect"] = true;
             $_SESSION["user"] = $post["register_pseudo"];
+            $_SESSION["avatar"] = $post['avatar'];
             ?>
                 <script LANGUAGE="JavaScript">
                     setTimeout(function() {
@@ -102,6 +103,7 @@
                     if($user->mdp == $mdp) {
                         $_SESSION["connect"] = true;
                         $_SESSION["user"] = $pseudo;
+                        $_SESSION["avatar"] = $user->avatar;
                         header('Location: profil.php');
                         exit();
                     } else {
@@ -117,6 +119,7 @@
     if (isset($_POST['deconnexion'])) {
         $_SESSION["connect"] = false;
         $_SESSION["user"] = "";
+        $_SESSION["avatar"] = "";
         header('Location: blog.php');
     }
     ?>

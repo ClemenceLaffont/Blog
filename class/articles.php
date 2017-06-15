@@ -2,14 +2,16 @@
 
 class Articles implements JsonSerializable {
     private $utilisateur;
+    private $avatar;
     private $titre;
     private $article;
     private $date;
     private $heure;
     private $newdate;
     private $newheure;
-    public function __construct($utilisateur, $titre, $article, $date, $heure) {
+    public function __construct($utilisateur, $avatar, $titre, $article, $date, $heure) {
         $this->utilisateur = $utilisateur;
+        $this->avatar = $avatar;
         $this->titre = $titre;
         $this->article = $article;
         $this->date = $date;
@@ -21,6 +23,7 @@ class Articles implements JsonSerializable {
     public function jsonSerialize() {
         return [
             "utilisateur" => $this->utilisateur,
+            "avatar" => $this->avatar,
             "titre" => $this->titre,
             "article" => $this->article,
             "date" => $this->date,
