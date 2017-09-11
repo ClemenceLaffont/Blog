@@ -31,7 +31,7 @@
     ?>
     <script LANGUAGE="JavaScript">
         setTimeout(function() {
-            document.location.href="blog.php";
+            document.location.href="index.php";
         }, 3000);
     </script>
     <?php
@@ -48,7 +48,7 @@
     ?>
     <script LANGUAGE="JavaScript">
         setTimeout(function() {
-            document.location.href="blog.php";
+            document.location.href="index.php";
         }, 3000);
     </script>
     <?php
@@ -120,7 +120,7 @@
         $_SESSION["connect"] = false;
         $_SESSION["user"] = "";
         $_SESSION["avatar"] = "";
-        header('Location: blog.php');
+        header('Location: index.php');
     }
     ?>
     

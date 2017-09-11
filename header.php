@@ -30,7 +30,7 @@
             ?>
             >Créer un article</a>
             <?php } ?>
-            <a href="blog.php"
+            <a href="index.php"
             <?php 
                 if (isset($page) && $page == "blog") {
                     echo ' class="underline" ';
